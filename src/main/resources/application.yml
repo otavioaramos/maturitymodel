@@ -1,4 +1,4 @@
 spring:
   data:
     mongodb:
-      uri: mongodb://localhost:27017/maturity-model
+      uri: mongodb://svc_envvias:YHd%21p9wAvQ*SZ7Vx%25h4GdJ97GXd%25VqGh@mdbh-envvias-1.dc.nova:27017/db_hlg_envvias?retryWrites=true&replicaSet=rsEnvvias

@@ -19,8 +19,10 @@ import java.lang.annotation.Documented;
 public class Aplicacoes {
 
     @Id
-    private ObjectId _id;
+    private String _id;
     private String nome;
+    private String linguagem;
+    private String versao;
     private String techLead;
     private Produto produto;
     private Arquitetura arquitetura;
