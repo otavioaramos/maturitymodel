@@ -2,10 +2,10 @@ package br.com.maturitymodel.maturitymodel.service;
 
 import br.com.maturitymodel.maturitymodel.model.Aplicacoes;
 import br.com.maturitymodel.maturitymodel.repository.AplicacoesRepository;
-import org.bson.types.ObjectId;
+import br.com.maturitymodel.maturitymodel.service.enums.Linguagens;
+import br.com.maturitymodel.maturitymodel.service.exceptions.ObjetoNaoEncontratoException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service
@@ -19,47 +19,33 @@ public class AplicacoesService {
     }
 
     public Aplicacoes findById (String _id) {
-        return repository.findById(_id).orElseThrow(() -> new RuntimeException("Não foi possível encontrar o id"));
+        return repository.findById(_id).orElseThrow(() -> new ObjetoNaoEncontratoException(_id));
     }
 
-    public boolean update (String _id, Aplicacoes aplicacoes){
+    public void update (String _id, Aplicacoes aplicacoes){
 
-        try {
-            findById(_id);
+         findById(_id);
 
-            repository.save(aplicacoes);
+         Linguagens linguagens = Linguagens.getLinguagem(aplicacoes.getLinguagem());
+         if (linguagens == null) throw new RuntimeException("Linguagem não permitida");
 
-            return true;
-
-        } catch(Exception e) {
-            return false;
-        }
+         repository.save(aplicacoes);
     }
 
-    public boolean insert (Aplicacoes aplicacoes){
+    public void insert (Aplicacoes aplicacoes){
 
-        try {
-            repository.save(aplicacoes);
+         Linguagens linguagens = Linguagens.getLinguagem(aplicacoes.getLinguagem());
+         if (linguagens == null) throw new RuntimeException("Linguagem não permitida");
 
-            return true;
+         repository.save(aplicacoes);
 
-        } catch(Exception e) {
-            return false;
-        }
     }
 
-    public boolean delete (String _id){
+    public void delete (String _id){
 
-        try {
+        findById(_id);
 
-            findById(_id);
+        repository.deleteById(_id);
 
-            repository.deleteById(_id);
-
-            return true;
-
-        } catch(Exception e) {
-            return false;
-        }
     }
 }

@@ -29,20 +29,20 @@ public class AplicacoesController {
 
     @PutMapping("/atualizarAplicacao/{id}")
     public ResponseEntity <Integer> update(@PathVariable String id, @RequestBody Aplicacoes aplicacoes){
-         boolean isAtualizado = aplicacoesService.update(id, aplicacoes);
-         return ResponseEntity.status(isAtualizado ? 200:500).build();
+         aplicacoesService.update(id, aplicacoes);
+         return ResponseEntity.status(200).build();
     }
 
     @PostMapping("/incluirAplicacao")
     public ResponseEntity <Integer> insert(@RequestBody Aplicacoes aplicacoes){
-        boolean isInserido = aplicacoesService.insert(aplicacoes);
-        return ResponseEntity.status(isInserido ? 200:500).build();
+        aplicacoesService.insert(aplicacoes);
+        return ResponseEntity.status(200).build();
     }
 
     @DeleteMapping("/deletarAplicacao/{id}")
     public ResponseEntity <Integer> delete(@PathVariable String id){
-        boolean isDeletado = aplicacoesService.delete(id);
-        return ResponseEntity.status(isDeletado ? 200:500).build();
+         aplicacoesService.delete(id);
+        return ResponseEntity.status(200).build();
     }
 
 }
