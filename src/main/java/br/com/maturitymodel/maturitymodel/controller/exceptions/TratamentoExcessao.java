@@ -19,9 +19,6 @@ public class TratamentoExcessao extends RuntimeException {
 
         ErroPadrao erroPadrao = ErroPadrao.builder().timestamp(Instant.now()).status(status.value()).erro(erro).messagem(exception.getMessage()).build();
 
-        return ResponseEntity.ok().body(erroPadrao);
+        return ResponseEntity.status(status).body(erroPadrao);
     };
-
-
-
 }

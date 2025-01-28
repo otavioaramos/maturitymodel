@@ -26,11 +26,11 @@ public class Aplicacoes {
     private Resiliencia resiliencia;
     private Observabilidade observabilidade;
     private DataDriven dataDriven;
-    private Seguranca seguranca;
     private Dados dados;
     private ServicosWeb servicosWeb;
     private Codigo codigo;
     private String dataCriacaoDocumento;
     private String dataAlteracaoDocumento;
+
 }
 

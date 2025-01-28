@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 public class ServicosWeb {
 
     private String gateway;
-    private String autorizacao;
+    private String izacao;
     private String padrao;
     private String swagger;
     private String sincronismo;

@@ -24,12 +24,17 @@ public class AplicacoesService {
 
     public void update (String _id, Aplicacoes aplicacoes){
 
-         findById(_id);
+         Aplicacoes aplicacoesAntiga = findById(_id);
+         aplicacoesAntiga.setNome(aplicacoes.getNome());
+         aplicacoesAntiga.setTechLead(aplicacoes.getNome());
+         aplicacoesAntiga.getProduto().setSquad(aplicacoes.getProduto().getSquad());
+
+         System.out.println(_id);
 
          Linguagens linguagens = Linguagens.getLinguagem(aplicacoes.getLinguagem());
          if (linguagens == null) throw new RuntimeException("Linguagem não permitida");
 
-         repository.save(aplicacoes);
+         repository.save(aplicacoesAntiga);
     }
 
     public void insert (Aplicacoes aplicacoes){
